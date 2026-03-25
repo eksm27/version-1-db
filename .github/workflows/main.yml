@@ -1,4 +1,4 @@
-name: Build & Push MySQL Image
+name: Build & Push MySQL Image-v1
 
 on:
   workflow_dispatch:
