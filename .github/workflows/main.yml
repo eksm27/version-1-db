@@ -5,7 +5,7 @@ on:
 
 jobs:
   build-push:
-    runs-on: [self-hosted, linux]
+    runs-on: [self-hosted, linux, kalyan]
 
     steps:
     # 1️⃣ Checkout code
