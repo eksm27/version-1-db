@@ -1,0 +1,25 @@
+name: Build and Push MySQL Image
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build-push:
+    runs-on: self-hosted
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+
+    - name: Docker Login
+      run: |
+        echo "${{ secrets.DOCKER_PASSWORD }}" | docker login \
+        -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
+
+    - name: Build Image
+      run: |
+        docker build -t ${{ secrets.DOCKER_USERNAME }}/mysql-portfolio:latest .
+
+    - name: Push Image
+      run: |
+        docker push ${{ secrets.DOCKER_USERNAME }}/mysql-portfolio:latest
